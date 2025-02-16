@@ -5,7 +5,7 @@ import java.util.List;
 public interface IGenericService<T> {
 	T add(T dto);
 	T update(T dto);
-	T retrieveById(Long id);
+	T retrieveById(long id);
 	List<T> retrieveAll();
-	void delete(Long id);
+	void delete(long id);
 }

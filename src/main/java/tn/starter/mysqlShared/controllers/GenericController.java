@@ -28,7 +28,7 @@ public class GenericController<T> {
 		return genericService.retrieveAll();
 	}
 	@DeleteMapping("/delete/{id}")
-	public void delete(@PathVariable Long id) {
+	public void delete(@PathVariable long id) {
 		genericService.delete(id);
 	}
 }

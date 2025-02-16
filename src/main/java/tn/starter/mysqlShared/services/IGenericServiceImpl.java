@@ -1,22 +1,19 @@
 package tn.starter.mysqlShared.services;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import tn.starter.mysqlShared.mappers.GenericMapper;
-
-import java.lang.reflect.ParameterizedType;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Slf4j
 public class IGenericServiceImpl<T,D> implements IGenericService<T> {
-	@Autowired
-	protected JpaRepository<D, Long> repository;
+
 
 	@Autowired
-	protected GenericMapper<T, D> mapper;
+	JpaRepository<D, Long> repository;
+	@Autowired
+	GenericMapper<T, D> mapper;
 
 	@Override
 	public T add(T dto) {
@@ -29,11 +26,11 @@ public class IGenericServiceImpl<T,D> implements IGenericService<T> {
 	}
 
 	@Override
-	public T retrieveById(Long id) {
+	public T retrieveById(long id) {
 		return mapper.toDto(repository.findById(id)
 				.orElseThrow(() ->
 						new IllegalArgumentException(new StringBuilder("No ")
-								.append(this.getClass().getName())
+								.append(this.getClass().getSimpleName())
 								.append(" found with this id").toString()
 						)));
 	}
@@ -44,7 +41,7 @@ public class IGenericServiceImpl<T,D> implements IGenericService<T> {
 	}
 
 	@Override
-	public void delete(Long id) {
+	public void delete(long id) {
 		repository.deleteById(id);
 	}
 }
