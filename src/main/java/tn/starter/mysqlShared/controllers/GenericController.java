@@ -7,7 +7,6 @@ import tn.starter.mysqlShared.services.IGenericService;
 import java.util.List;
 
 public class GenericController<T> {
-
 	@Autowired
 	IGenericService<T> genericService;
 
