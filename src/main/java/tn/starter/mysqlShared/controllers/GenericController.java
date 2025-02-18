@@ -3,7 +3,6 @@ package tn.starter.mysqlShared.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tn.starter.mysqlShared.services.IGenericService;
-
 import java.util.List;
 
 public class GenericController<T> {
